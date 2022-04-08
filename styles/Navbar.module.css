@@ -1,0 +1,100 @@
+.navbar {
+  background: var(--dark-gray-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+  z-index: 0;
+}
+
+.left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  color: var(--gray-font);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.left a:hover {
+  color: white;
+}
+
+.leftToken {
+  font-size: 14px;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 750px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: black;
+  padding: 0 20px;
+  color: white;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.searchBar::placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #292c31;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.dropdown:hover {
+  filter: brightness(0.8);
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.cryptoLogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background-color: #34373f;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.menu:hover {
+  background-color: #40444f;
+}

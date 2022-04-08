@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Inter, sans-serif;
+  background: var(--light-gray-bg);
 }
 
 a {
@@ -13,4 +16,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --dark-gray-bg: #191b1f;
+  --light-gray-bg: #1f2128;
+  --gray-select: #2c2f36;
+  --gray-font: #c3c5cb;
+  --dark-gray-font: #545868;
+  --error: #fd4040;
+  --validate: #27ae60;
 }

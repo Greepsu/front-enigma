@@ -1,0 +1,39 @@
+.topTokens {
+  width: 100%;
+}
+
+.topTokens h4 {
+  color: var(--gray-font);
+}
+
+.topTokensList {
+  border-radius: 16px;
+  padding: 1rem;
+  background-color: rgb(25, 27, 31);
+  width: 100%;
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 16px;
+}
+
+.topTokensListLegend {
+  display: grid;
+  gap: 1em;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-template-columns: 20px 3fr repeat(3, 1fr);
+}
+
+.legend,
+.legendR {
+  color: var(--gray-font);
+}
+
+.legendR {
+  justify-self: end;
+}
+.separator {
+  height: 1px;
+  background-color: rgb(31, 33, 40);
+  width: 100%;
+}

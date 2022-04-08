@@ -1,0 +1,37 @@
+.token {
+  display: grid;
+  gap: 1em;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-template-columns: 20px 3fr repeat(3, 1fr);
+}
+
+.tokenNameInfo {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.tokenLogo,
+.tokenName,
+.tokenPrice,
+.tokenVolume,
+.tokenTvl {
+  font-weight: 500;
+  color: white;
+  justify-self: end;
+}
+
+.tokenNumber {
+  color: white;
+}
+
+.tokenName {
+  margin-left: 10px;
+}
+
+.tokenId {
+  color: var(--dark-gray-font);
+  margin-left: 10px;
+}
