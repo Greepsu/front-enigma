@@ -13,6 +13,9 @@ export default function TopTokens() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    const paginate = (array, pageSize, pageNumber) => {
+      return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+    };
     setPaginateTokens(paginate(data, 10, currentPage));
   }, [data, currentPage]);
 
@@ -24,14 +27,11 @@ export default function TopTokens() {
 
   const goToPreviousPage = () => setCurrentPage((page) => page - 1);
 
-  const paginate = (array, pageSize, pageNumber) => {
-    return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-  };
   const renderTokens = () => {
     return paginateTokens.map((token, index) => {
       const tokenData = {
         key: index,
-        rank: index + 1,
+        rank: token.cmc_rank,
         name: token.name,
         symbol: token.symbol,
         id: token.id,
