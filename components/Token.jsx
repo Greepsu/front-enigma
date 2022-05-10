@@ -25,7 +25,7 @@ export default function Token({ ...tokenData }) {
         <div className={styles.tokenNameInfo}>
           <Image
             className={styles.tokenLogo}
-            src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            src={tokenData.logo}
             width={25}
             height={25}
             alt="logo"

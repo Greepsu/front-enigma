@@ -13,15 +13,12 @@ export default function Home() {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(
-    `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
-    {
-      method: "GET",
-      headers: {
-        "X-CMC_PRO_API_KEY": "42fe3c93-48ce-41ff-868b-49fdac969a49",
-      },
-    }
-  );
+  const response = await fetch(`${process.env.API_URL_CMC}`, {
+    method: "GET",
+    headers: {
+      "X-CMC_PRO_API_KEY": "42fe3c93-48ce-41ff-868b-49fdac969a49",
+    },
+  });
   const tokens = await response.json();
 
   return {

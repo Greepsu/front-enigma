@@ -12,10 +12,10 @@ export default function Navbar() {
         <div>L</div>
         <Link href="#">Overview</Link>
         <Link href="#">Pools</Link>
-        <Link href="#">
+        <Link href="/tokens">
           <a className={styles.leftToken}>Native Tokens</a>
         </Link>
-        <Link href="#">
+        <Link href="/tokens">
           <a className={styles.leftToken}>CW-20 Tokens</a>
         </Link>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GraphCard from "./GraphCard";
 import TopTokens from "./TopTokens";
 import styles from "../styles/Overview.module.css";
+import Trading from "./Trading";
 
 export default function Overview() {
   return (
@@ -13,10 +14,8 @@ export default function Overview() {
       </div>
       <h4>Top Tokens</h4>
       <TopTokens />
-      {/* <h4>Top CW-20 Tokens</h4>
-      <TopTokens />
-      <h4>Top Pools</h4>
-      <TopTokens /> */}
+      <h4>Trading</h4>
+      <Trading />
     </div>
   );
 }

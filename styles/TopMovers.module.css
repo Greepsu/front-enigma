@@ -1,0 +1,18 @@
+.topMovers {
+    
+    background-color: var(--dark-gray-bg);
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.topMovers h4 {
+    color: var(--dark-gray-font);
+    font-weight: 400;
+    padding: 0;
+    margin-top: 0;
+}
+
+.movers {
+    display: flex;
+    justify-content: space-between;
+}

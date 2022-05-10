@@ -1,0 +1,17 @@
+.mover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-gray-bg);
+    padding: 10px;
+    color: white;
+}
+
+.moverGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.priceGroup {
+    display: flex;
+}
