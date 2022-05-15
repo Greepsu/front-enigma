@@ -15,7 +15,4 @@
   align-items: center;
 }
 
-.overview h4 {
-  color: var(--gray-font);
-  align-self: flex-start;
-}
+

@@ -1,23 +1,9 @@
+import React from "react";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
 
 export default function Token({ ...tokenData }) {
-  const colorChangePrice = () => {
-    if (tokenData.priceChange24h > 0) {
-      return { color: "green" };
-    } else if (tokenData.priceChange24h < 0) {
-      return { color: "red" };
-    }
-  };
-  const shortToK = (data) => {
-    if (data > 1000) {
-      return `${Math.round((data / 1000).toFixed(2))} K`;
-    } else {
-      return data;
-    }
-  };
-
   return (
     <a href="#">
       <div className={styles.token}>
@@ -37,7 +23,10 @@ export default function Token({ ...tokenData }) {
         <div className={styles.tokenVolume}>
           {shortToK(tokenData.totalSupply)}
         </div>
-        <div className={styles.tokenTvl} style={colorChangePrice()}>
+        <div
+          className={styles.tokenTvl}
+          style={colorChangePrice(tokenData.priceChange24h)}
+        >
           {tokenData.priceChange24h.toFixed(2)} %
         </div>
       </div>

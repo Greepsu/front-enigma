@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.bg}></div>
-      <Navbar />
       <Overview />
     </div>
   );

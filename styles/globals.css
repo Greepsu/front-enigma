@@ -19,6 +19,16 @@ a {
   box-sizing: border-box;
 }
 
+ h4 {
+  color: var(--gray-font);
+  align-self: flex-start;
+}
+
+.ticker {
+  display: flex;
+  width: 100%;
+}
+
 :root {
   --dark-gray-bg: #191b1f;
   --light-gray-bg: #1f2128;
