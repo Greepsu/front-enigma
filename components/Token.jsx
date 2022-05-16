@@ -1,11 +1,16 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
 
 export default function Token({ ...tokenData }) {
   return (
-    <a href="#">
+    <Link
+      href="/tokens/[tokenInfo]"
+      as={`/tokens/${tokenData.name.toLowerCase()}`}
+      passHref
+    >
       <div className={styles.token}>
         <div className={styles.tokenNumber}>{tokenData.rank}</div>
         <div className={styles.tokenNameInfo}>
@@ -30,6 +35,6 @@ export default function Token({ ...tokenData }) {
           {tokenData.priceChange24h.toFixed(2)} %
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

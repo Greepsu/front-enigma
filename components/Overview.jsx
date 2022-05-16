@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import GraphCard from "./GraphCard";
 import TopTokens from "./TopTokens";
 import styles from "../styles/Overview.module.css";

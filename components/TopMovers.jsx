@@ -10,7 +10,7 @@ export default function TopMovers() {
   const [topMovers, setTopMovers] = useState([]);
 
   useEffect(() => {
-    setTopMovers(data.slice(0, 10));
+    if (data) setTopMovers(data.slice(0, 10));
   }, [data]);
 
   const renderMover = () => {

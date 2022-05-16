@@ -1,7 +1,7 @@
 import React from "react";
-import TopMovers from "../components/TopMovers";
-import TopTokens from "../components/TopTokens";
-import styles from "../styles/Tokens.module.css";
+import TopMovers from "../../components/TopMovers";
+import TopTokens from "../../components/TopTokens";
+import styles from "../../styles/Tokens.module.css";
 
 export default function Tokens() {
   return (

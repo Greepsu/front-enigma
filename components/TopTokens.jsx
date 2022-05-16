@@ -13,12 +13,9 @@ export default function TopTokens() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    if (!data) return "Nooon";
     setPaginateTokens(paginate(data, 10, currentPage));
   }, [data, currentPage]);
-
-  if (!data) {
-    return "Loading";
-  }
 
   const goToNextPage = () => setCurrentPage((page) => page + 1);
 
