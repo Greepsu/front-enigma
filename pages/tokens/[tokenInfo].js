@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { TokenContext } from "../../contexts/TokenContext";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-const Charts = dynamic(() => import("../../components/Charts"), {
+const TvlCharts = dynamic(() => import("../../components/Charts/TvlCharts"), {
   ssr: false,
 });
 
@@ -71,7 +71,7 @@ export default function TokenInfo() {
           </div>
         </div>
         <div className={styles.volumeChartsContainer}>
-          <Charts />
+          <TvlCharts />
         </div>
       </div>
     </div>
