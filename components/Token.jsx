@@ -7,8 +7,10 @@ import styles from "../styles/Token.module.css";
 export default function Token({ ...tokenData }) {
   return (
     <Link
-      href="/tokens/[tokenInfo]"
-      as={`/tokens/${tokenData.name.toLowerCase()}`}
+      href={{
+        pathname: `/tokens/${tokenData.name.toLowerCase()}`,
+        query: { ...tokenData },
+      }}
       passHref
     >
       <div className={styles.token}>

@@ -11,6 +11,7 @@ export default function TopTokens() {
   const { data } = useContext(TokenContext);
   const [paginateTokens, setPaginateTokens] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  console.log(paginateTokens);
 
   useEffect(() => {
     if (!data) return "Nooon";

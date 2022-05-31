@@ -1,16 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/TokenInfo.module.css";
 import Breadcrumbs from "nextjs-breadcrumbs";
 import { useContext } from "react";
 import { TokenContext } from "../../contexts/TokenContext";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { ChartSwitchButton } from "../../enums/Token";
+import { useRouter } from "next/router";
+import { shortToK, colorChangePrice } from "../../utils/utils";
+
+const VolumeCharts = dynamic(
+  () => import("../../components/Charts/VolumeCharts"),
+  {
+    ssr: false,
+  }
+);
 const TvlCharts = dynamic(() => import("../../components/Charts/TvlCharts"), {
   ssr: false,
 });
+const PriceCharts = dynamic(
+  () => import("../../components/Charts/PriceCharts"),
+  {
+    ssr: false,
+  }
+);
 
 export default function TokenInfo() {
   const { data } = useContext(TokenContext);
+  const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
+
+  const router = useRouter();
+  const tokenInfo = router.query;
+
+  const renderGraph = () => {
+    if (!visibleChart) return;
+    if (visibleChart === ChartSwitchButton.PRICE) {
+      return <PriceCharts />;
+    } else if (visibleChart === ChartSwitchButton.TVL) {
+      return <TvlCharts />;
+    } else if (visibleChart === ChartSwitchButton.VOLUME) {
+      return <VolumeCharts />;
+    } else {
+      return <div>Loading...</div>;
+    }
+  };
+
+  const stylesSwitchButton = {
+    buttonActive: {
+      backgroundColor: "black",
+      color: "white",
+    },
+  };
 
   return (
     <div className={styles.tokenInfo}>
@@ -26,18 +66,25 @@ export default function TokenInfo() {
         <div className={styles.left}>
           <div className={styles.info}>
             <Image
-              src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+              src={tokenInfo.logo}
               width={24}
               height={24}
               className={styles.logo}
               alt="logo"
             />
-            <div className={styles.name}>Ether</div>
-            <div className={styles.id}>(ETH)</div>
+            <div className={styles.name}>{tokenInfo.name}</div>
+            <div className={styles.id}>{tokenInfo.symbol}</div>
           </div>
           <div className={styles.description}>
-            <div className={styles.price}>$2.01k</div>
-            <div className={styles.change24}>(100%)</div>
+            <div className={styles.price}>
+              ${parseInt(tokenInfo.price).toFixed(2)}
+            </div>
+            <div
+              className={styles.change24}
+              style={colorChangePrice(parseInt(tokenInfo.priceChange24h))}
+            >
+              ({parseInt(tokenInfo.priceChange24h).toFixed(2)}%)
+            </div>
           </div>
         </div>
         <div className={styles.right}>
@@ -70,8 +117,43 @@ export default function TokenInfo() {
             <div className={styles.value}>$1.40m</div>
           </div>
         </div>
-        <div className={styles.volumeChartsContainer}>
-          <TvlCharts />
+        <div className={styles.allChartsContainer}>
+          <div className={styles.switchButtonGroup}>
+            <button
+              onClick={() => setVisibleChart(ChartSwitchButton.PRICE)}
+              className={styles.switchButton}
+              style={
+                visibleChart === ChartSwitchButton.PRICE
+                  ? stylesSwitchButton.buttonActive
+                  : null
+              }
+            >
+              <span>Price</span>
+            </button>
+            <button
+              onClick={() => setVisibleChart(ChartSwitchButton.TVL)}
+              className={styles.switchButton}
+              style={
+                visibleChart === ChartSwitchButton.TVL
+                  ? stylesSwitchButton.buttonActive
+                  : null
+              }
+            >
+              <span>TVL</span>
+            </button>
+            <button
+              onClick={() => setVisibleChart(ChartSwitchButton.VOLUME)}
+              className={styles.switchButton}
+              style={
+                visibleChart === ChartSwitchButton.VOLUME
+                  ? stylesSwitchButton.buttonActive
+                  : null
+              }
+            >
+              <span>Volume</span>
+            </button>
+          </div>
+          {renderGraph()}
         </div>
       </div>
     </div>

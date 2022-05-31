@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { createChart, CrosshairMode } from "lightweight-charts";
 import styles from "../../styles/Charts.module.css";
 
-export default function PriceCharts() {
+export default function VolumeCharts() {
   const chartContainerRef = useRef();
   const chart = useRef();
   const resizeObserver = useRef();
@@ -206,10 +206,8 @@ export default function PriceCharts() {
       { time: "2019-05-28", value: 3097125.0 },
     ];
 
-    const baselineSeries = chart.current.addBaselineSeries({
-      topLineColor: "rgba(120,134,134, 1)",
-      topFillColor1: "rgba(120,134,134, 0.28)",
-      topFillColor2: "rgba(120,134,134, 0.05)",
+    const baselineSeries = chart.current.addHistogramSeries({
+      color: "rgba(120,134,134, 1)",
       lineWidth: 2,
       crosshairMarkerBorderColor: "#fff",
       priceLineVisible: false,
