@@ -32,14 +32,28 @@ export default function TokenInfo() {
   const router = useRouter();
   const tokenInfo = router.query;
 
+  const styleTvl = {
+    backgroundColor: "#191b1f",
+    textColor: "#545868",
+    topLineColor: "rgba(120,134,134, 1)",
+    topFillColor1: "rgba(120,134,134, 0.28)",
+    topFillColor2: "rgba(120,134,134, 0.05)",
+  };
+
+  const styleVolume = {
+    backgroundColor: "#191b1f",
+    textColor: "#545868",
+    color: "rgba(120,134,134, 1)",
+  };
+
   const renderGraph = () => {
     if (!visibleChart) return;
     if (visibleChart === ChartSwitchButton.PRICE) {
-      return <PriceCharts />;
+      return <PriceCharts bgColor={"#191b1f"} />;
     } else if (visibleChart === ChartSwitchButton.TVL) {
-      return <TvlCharts />;
+      return <TvlCharts styleCharts={styleTvl} />;
     } else if (visibleChart === ChartSwitchButton.VOLUME) {
-      return <VolumeCharts />;
+      return <VolumeCharts styleCharts={styleVolume} />;
     } else {
       return <div>Loading...</div>;
     }
@@ -77,7 +91,7 @@ export default function TokenInfo() {
           </div>
           <div className={styles.description}>
             <div className={styles.price}>
-              ${parseInt(tokenInfo.price).toFixed(2)}
+              ${shortToK(parseInt(tokenInfo.price))}
             </div>
             <div
               className={styles.change24}

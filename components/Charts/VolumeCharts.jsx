@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { createChart, CrosshairMode } from "lightweight-charts";
 import styles from "../../styles/Charts.module.css";
 
-export default function VolumeCharts() {
+export default function VolumeCharts({ styleCharts }) {
   const chartContainerRef = useRef();
   const chart = useRef();
   const resizeObserver = useRef();
@@ -12,8 +12,8 @@ export default function VolumeCharts() {
       width: chartContainerRef.current.clientWidth,
       height: chartContainerRef.current.clientHeight,
       layout: {
-        backgroundColor: "#191b1f",
-        textColor: "#545868",
+        backgroundColor: styleCharts.backgroundColor,
+        textColor: styleCharts.textColor,
         fontFamily: "Inter, sans-serif",
       },
       grid: {
@@ -207,14 +207,14 @@ export default function VolumeCharts() {
     ];
 
     const baselineSeries = chart.current.addHistogramSeries({
-      color: "rgba(120,134,134, 1)",
+      color: styleCharts.color,
       lineWidth: 2,
       crosshairMarkerBorderColor: "#fff",
       priceLineVisible: false,
     });
 
     baselineSeries.setData(volumeData);
-  }, []);
+  }, [styleCharts]);
 
   // Resize chart on container resizes.
   useEffect(() => {

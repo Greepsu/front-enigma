@@ -5,7 +5,7 @@
   gap: 32px;
   align-items: flex-start;
   font-family: Inter, sans-serif;
-  padding: 0 10%;
+  padding: 0 15%;
 }
 
 .tokenInfo > nav > ol {
@@ -202,8 +202,12 @@
 }
 
 .switchButtonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: fit-content;
+  gap: 10px;
   background-color: var(--light-gray-bg);
-  width:fit-content;
   padding: 10px;
   border-radius: 30px;
 }
@@ -215,6 +219,7 @@
   cursor: pointer;
   color: #c3c5cb;
   background-color: transparent;
+  padding: 4px 12px;
 
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { createChart, CrosshairMode } from "lightweight-charts";
 import styles from "../../styles/Charts.module.css";
 
-export default function PriceCharts() {
+export default function TvlCharts({ styleCharts }) {
   const chartContainerRef = useRef();
   const chart = useRef();
   const resizeObserver = useRef();
@@ -12,8 +12,8 @@ export default function PriceCharts() {
       width: chartContainerRef.current.clientWidth,
       height: chartContainerRef.current.clientHeight,
       layout: {
-        backgroundColor: "#191b1f",
-        textColor: "#545868",
+        backgroundColor: styleCharts.backgroundColor,
+        textColor: styleCharts.textColor,
         fontFamily: "Inter, sans-serif",
       },
       grid: {
@@ -53,7 +53,7 @@ export default function PriceCharts() {
       },
     });
 
-    const volumeData = [
+    const tvlData = [
       { time: "2018-10-19", value: 19103293.0 },
       { time: "2018-10-22", value: 21737523.0 },
       { time: "2018-10-23", value: 29328713.0 },
@@ -207,18 +207,17 @@ export default function PriceCharts() {
     ];
 
     const baselineSeries = chart.current.addBaselineSeries({
-      topLineColor: "rgba(120,134,134, 1)",
-      topFillColor1: "rgba(120,134,134, 0.28)",
-      topFillColor2: "rgba(120,134,134, 0.05)",
+      topLineColor: styleCharts.topLineColor,
+      topFillColor1: styleCharts.topFillColor1,
+      topFillColor2: styleCharts.topFillColor2,
       lineWidth: 2,
       crosshairMarkerBorderColor: "#fff",
       priceLineVisible: false,
     });
 
-    baselineSeries.setData(volumeData);
-  }, []);
+    baselineSeries.setData(tvlData);
+  }, [styleCharts]);
 
-  // Resize chart on container resizes.
   useEffect(() => {
     resizeObserver.current = new ResizeObserver((entries) => {
       const { width, height } = entries[0].contentRect;

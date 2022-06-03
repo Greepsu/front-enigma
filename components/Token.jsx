@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
+import ImageWithFallback from "./ImageWithFallback";
+import fallbackImg from "../assets/icon/help-circle.svg";
 
 export default function Token({ ...tokenData }) {
   return (
@@ -16,9 +18,10 @@ export default function Token({ ...tokenData }) {
       <div className={styles.token}>
         <div className={styles.tokenNumber}>{tokenData.rank}</div>
         <div className={styles.tokenNameInfo}>
-          <Image
+          <ImageWithFallback
             className={styles.tokenLogo}
             src={tokenData.logo}
+            fallbackSrc={fallbackImg}
             width={25}
             height={25}
             alt="logo"

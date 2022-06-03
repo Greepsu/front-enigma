@@ -6,24 +6,21 @@ import { TokenContext } from "../contexts/TokenContext";
 import Image from "next/image";
 import leftArrow from "../assets/icon/arrow-left.svg";
 import rightArrow from "../assets/icon/arrow-right.svg";
+import { paginate } from "../utils/utils";
 
 export default function TopTokens() {
   const { data } = useContext(TokenContext);
   const [paginateTokens, setPaginateTokens] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(paginateTokens);
 
   useEffect(() => {
-    if (!data) return "Nooon";
+    if (!data) return;
     setPaginateTokens(paginate(data, 10, currentPage));
   }, [data, currentPage]);
 
   const goToNextPage = () => setCurrentPage((page) => page + 1);
 
   const goToPreviousPage = () => setCurrentPage((page) => page - 1);
-
-  const paginate = (array, pageSize, pageNumber) =>
-    array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
 
   const renderTokens = () => {
     return paginateTokens.map((token, index) => {

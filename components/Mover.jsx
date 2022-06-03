@@ -2,12 +2,15 @@ import Image from "next/image";
 import React from "react";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Mover.module.css";
+import ImageWithFallback from "./ImageWithFallback";
+import fallbackSrc from "../assets/icon/help-circle.svg";
 
 export default function Mover({ ...moverData }) {
   return (
     <div className={styles.mover}>
-      <Image
+      <ImageWithFallback
         src={moverData.logo}
+        fallbackSrc={fallbackSrc}
         className={styles.logo}
         width={30}
         height={30}

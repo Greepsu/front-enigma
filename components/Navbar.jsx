@@ -11,12 +11,8 @@ export default function Navbar() {
       <div className={styles.left}>
         <div>L</div>
         <Link href="/">Overview</Link>
-        <Link href="#">Pools</Link>
         <Link href="/tokens/tokens" as="/tokens">
-          <a className={styles.leftToken}>Native Tokens</a>
-        </Link>
-        <Link href="/tokens/tokens" as="/tokens">
-          <a className={styles.leftToken}>CW-20 Tokens</a>
+          <a className={styles.leftToken}>Tokens</a>
         </Link>
       </div>
       <div className={styles.right}>
