@@ -33,6 +33,8 @@ export default function TokenInfo() {
   const router = useRouter();
   const tokenInfo = router.query;
 
+  console.log(tokenInfo);
+
   const styleTvl = {
     backgroundColor: "#191b1f",
     textColor: "#545868",

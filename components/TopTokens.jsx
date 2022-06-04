@@ -22,6 +22,7 @@ export default function TopTokens() {
 
   const goToPreviousPage = () => setCurrentPage((page) => page - 1);
 
+  //!HAAAAAAAAAAAAAAAAAA
   const renderTokens = () => {
     return paginateTokens.map((token, index) => {
       const tokenData = {
