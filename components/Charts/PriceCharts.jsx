@@ -63,6 +63,7 @@ export default function PriceCharts({ setCurrentValue }) {
         param.point.y < 0 ||
         param.point.y > chartContainerRef.current.clientHeight
       ) {
+        return;
       } else {
         setCurrentValue(param.seriesPrices.get(candleSeries).close);
       }

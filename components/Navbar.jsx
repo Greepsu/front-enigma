@@ -4,12 +4,25 @@ import styles from "../styles/Navbar.module.css";
 import { BsChevronDown, BsThreeDots } from "react-icons/bs";
 import Image from "next/image";
 import ethIcon from "../assets/icon/ethereum-logo.png";
+import uniswapLogo from "../assets/icon/uniswap.png";
 
 export default function Navbar() {
+  const stylesSwitchButton = {
+    buttonActive: {
+      backgroundColor: "black",
+      color: "white",
+    },
+  };
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>
-        <div>L</div>
+        <Image
+          className={styles.logo}
+          width={60}
+          height={60}
+          src={uniswapLogo}
+          alt="uniswap logo"
+        />
         <Link href="/">Overview</Link>
         <Link href="/tokens/tokens" as="/tokens">
           <a className={styles.leftToken}>Tokens</a>

@@ -28,7 +28,7 @@ const PriceCharts = dynamic(
 export default function TokenInfo() {
   const { data } = useContext(TokenContext);
   const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
-  const [currentValue, setCurrentValue] = useState(0);
+  const [currentValue, setCurrentValue] = useState();
 
   const router = useRouter();
   const tokenInfo = router.query;
@@ -129,8 +129,13 @@ export default function TokenInfo() {
           </div>
           <div className={styles.tvl24h}>
             <h4 className={styles.title}>24h Trading Vol</h4>
-            <div className={styles.value}>$1.17b</div>
-            <div className={styles.variation}>8.09%</div>
+            <div className={styles.value}>{shortToK(tokenInfo.volume24)}</div>
+            <div
+              style={colorChangePrice(parseInt(tokenInfo.volumeChange24h))}
+              className={styles.variation}
+            >
+              {parseInt(tokenInfo.volumeChange24h).toFixed(2)}%
+            </div>
           </div>
           <div className={styles.tvl7d}>
             <h4 className={styles.title}>7d Trading Vol</h4>
@@ -178,8 +183,8 @@ export default function TokenInfo() {
                 <span>Volume</span>
               </button>
             </div>
-            <div className={styles.value}>
-              <div>{currentValue}</div>
+            <div className={styles.graphValue}>
+              <div>{shortToK(currentValue)}</div>
             </div>
           </div>
           {renderGraph()}

@@ -33,6 +33,8 @@ export default function TopTokens() {
         id: token.id,
         price: token.quote.USD.price,
         totalSupply: token.total_supply,
+        volume24: token.quote.USD.volume_24h,
+        volumeChange24h: token.quote.USD.volume_change_24h,
         priceChange24h: token.quote.USD.percent_change_24h,
       };
       return (
