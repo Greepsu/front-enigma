@@ -28,6 +28,7 @@ const PriceCharts = dynamic(
 export default function TokenInfo() {
   const { data } = useContext(TokenContext);
   const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
+  const [currentValue, setCurrentValue] = useState(0);
 
   const router = useRouter();
   const tokenInfo = router.query;
@@ -49,11 +50,20 @@ export default function TokenInfo() {
   const renderGraph = () => {
     if (!visibleChart) return;
     if (visibleChart === ChartSwitchButton.PRICE) {
-      return <PriceCharts bgColor={"#191b1f"} />;
+      return (
+        <PriceCharts setCurrentValue={setCurrentValue} styleCharts={styleTvl} />
+      );
     } else if (visibleChart === ChartSwitchButton.TVL) {
-      return <TvlCharts styleCharts={styleTvl} />;
+      return (
+        <TvlCharts setCurrentValue={setCurrentValue} styleCharts={styleTvl} />
+      );
     } else if (visibleChart === ChartSwitchButton.VOLUME) {
-      return <VolumeCharts styleCharts={styleVolume} />;
+      return (
+        <VolumeCharts
+          setCurrentValue={setCurrentValue}
+          styleCharts={styleVolume}
+        />
+      );
     } else {
       return <div>Loading...</div>;
     }
@@ -132,40 +142,45 @@ export default function TokenInfo() {
           </div>
         </div>
         <div className={styles.allChartsContainer}>
-          <div className={styles.switchButtonGroup}>
-            <button
-              onClick={() => setVisibleChart(ChartSwitchButton.PRICE)}
-              className={styles.switchButton}
-              style={
-                visibleChart === ChartSwitchButton.PRICE
-                  ? stylesSwitchButton.buttonActive
-                  : null
-              }
-            >
-              <span>Price</span>
-            </button>
-            <button
-              onClick={() => setVisibleChart(ChartSwitchButton.TVL)}
-              className={styles.switchButton}
-              style={
-                visibleChart === ChartSwitchButton.TVL
-                  ? stylesSwitchButton.buttonActive
-                  : null
-              }
-            >
-              <span>TVL</span>
-            </button>
-            <button
-              onClick={() => setVisibleChart(ChartSwitchButton.VOLUME)}
-              className={styles.switchButton}
-              style={
-                visibleChart === ChartSwitchButton.VOLUME
-                  ? stylesSwitchButton.buttonActive
-                  : null
-              }
-            >
-              <span>Volume</span>
-            </button>
+          <div className={styles.topContainer}>
+            <div className={styles.switchButtonGroup}>
+              <button
+                onClick={() => setVisibleChart(ChartSwitchButton.PRICE)}
+                className={styles.switchButton}
+                style={
+                  visibleChart === ChartSwitchButton.PRICE
+                    ? stylesSwitchButton.buttonActive
+                    : null
+                }
+              >
+                <span>Price</span>
+              </button>
+              <button
+                onClick={() => setVisibleChart(ChartSwitchButton.TVL)}
+                className={styles.switchButton}
+                style={
+                  visibleChart === ChartSwitchButton.TVL
+                    ? stylesSwitchButton.buttonActive
+                    : null
+                }
+              >
+                <span>TVL</span>
+              </button>
+              <button
+                onClick={() => setVisibleChart(ChartSwitchButton.VOLUME)}
+                className={styles.switchButton}
+                style={
+                  visibleChart === ChartSwitchButton.VOLUME
+                    ? stylesSwitchButton.buttonActive
+                    : null
+                }
+              >
+                <span>Volume</span>
+              </button>
+            </div>
+            <div className={styles.value}>
+              <div>{currentValue}</div>
+            </div>
           </div>
           {renderGraph()}
         </div>

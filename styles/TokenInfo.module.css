@@ -201,6 +201,12 @@
   background-color: var(--dark-gray-bg);
 }
 
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .switchButtonGroup {
   display: flex;
   justify-content: space-between;
