@@ -14,9 +14,9 @@ export default function TopMovers() {
   }, [data]);
 
   const renderMover = () => {
-    return topMovers.map((token, index) => {
+    return topMovers.map((token) => {
       const moverData = {
-        key: index,
+        key: token.id,
         logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
         symbol: token.symbol,
         price: token.quote.USD.price,

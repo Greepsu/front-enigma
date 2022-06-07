@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/TokenInfo.module.css";
 import Breadcrumbs from "nextjs-breadcrumbs";
-import { useContext } from "react";
-import { TokenContext } from "../../contexts/TokenContext";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { ChartSwitchButton } from "../../enums/Token";
 import { useRouter } from "next/router";
@@ -26,14 +23,11 @@ const PriceCharts = dynamic(
 );
 
 export default function TokenInfo() {
-  const { data } = useContext(TokenContext);
   const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
   const [currentValue, setCurrentValue] = useState();
 
   const router = useRouter();
   const tokenInfo = router.query;
-
-  console.log(tokenInfo);
 
   const styleTvl = {
     backgroundColor: "#191b1f",
@@ -91,13 +85,6 @@ export default function TokenInfo() {
       <div className={styles.header}>
         <div className={styles.left}>
           <div className={styles.info}>
-            <Image
-              src={tokenInfo.logo}
-              width={24}
-              height={24}
-              className={styles.logo}
-              alt="logo"
-            />
             <div className={styles.name}>{tokenInfo.name}</div>
             <div className={styles.id}>{tokenInfo.symbol}</div>
           </div>

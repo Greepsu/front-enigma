@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { createChart, CrosshairMode } from "lightweight-charts";
 import styles from "../../styles/Charts.module.css";
 import { priceData } from "../../utils/data";
@@ -29,6 +29,9 @@ export default function PriceCharts({ setCurrentValue }) {
       },
       crosshair: {
         mode: CrosshairMode.Magnet,
+      },
+      handleScale: {
+        mouseWheel: false,
       },
       priceScale: {
         borderColor: "#485c7b",

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Mover.module.css";

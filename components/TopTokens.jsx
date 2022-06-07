@@ -1,52 +1,20 @@
-import React, { useEffect, useState } from "react";
-import styles from "../styles/TopTokens.module.css";
-import Token from "./Token";
+import React from "react";
 import { useContext } from "react";
-import { TokenContext } from "../contexts/TokenContext";
+import { TopTokensContext } from "../contexts/TopTokensContext";
 import Image from "next/image";
 import leftArrow from "../assets/icon/arrow-left.svg";
 import rightArrow from "../assets/icon/arrow-right.svg";
-import { paginate } from "../utils/utils";
+import styles from "../styles/TopTokens.module.css";
 
 export default function TopTokens() {
-  const { data } = useContext(TokenContext);
-  const [paginateTokens, setPaginateTokens] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    if (!data) return;
-    setPaginateTokens(paginate(data, 10, currentPage));
-  }, [data, currentPage]);
-
-  const goToNextPage = () => setCurrentPage((page) => page + 1);
-
-  const goToPreviousPage = () => setCurrentPage((page) => page - 1);
-
-  //!HAAAAAAAAAAAAAAAAAA
-  const renderTokens = () => {
-    return paginateTokens.map((token, index) => {
-      const tokenData = {
-        key: index,
-        rank: token.cmc_rank,
-        name: token.name,
-        logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
-        symbol: token.symbol,
-        id: token.id,
-        price: token.quote.USD.price,
-        totalSupply: token.total_supply,
-        volume24: token.quote.USD.volume_24h,
-        volumeChange24h: token.quote.USD.volume_change_24h,
-        priceChange24h: token.quote.USD.percent_change_24h,
-      };
-      return (
-        <>
-          <Token {...tokenData} />
-          <div className={styles.separator}></div>
-        </>
-      );
-    });
-  };
-
+  const {
+    paginateTokens,
+    goToNextPage,
+    goToPreviousPage,
+    currentPage,
+    renderTokens,
+  } = useContext(TopTokensContext);
+  if (!paginateTokens) return null;
   return (
     <div className={styles.topTokens}>
       <div className={styles.topTokensList}>

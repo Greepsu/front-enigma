@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
