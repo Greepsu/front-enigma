@@ -4,8 +4,8 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 15%;
-
+  width: 65%;
+  border: 1px solid green;
 }
 
 .cardContainer {
@@ -13,17 +13,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
 }
 
 .graphCard {
-  width: 600px;
+  width: 48%;
   height: 350px;
   background-color: var(--dark-gray-bg);
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 0 20px 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.graphValue {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.graphValue div {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .graphCard h4 {
@@ -31,6 +44,27 @@
   font-weight: 400;
   font-size: 16px;
   color: var(--gray-font);
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  background: var(--dark-gray-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.info > span {
+  color: var(--gray-font);
+  font-weight: 500;
+}
+
+.info span:nth-child(2) {
+  color: white;
+  font-weight: 600;
 }
 
 

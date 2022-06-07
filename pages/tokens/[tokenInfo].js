@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/TokenInfo.module.css";
 import Breadcrumbs from "nextjs-breadcrumbs";
 import dynamic from "next/dynamic";
 import { ChartSwitchButton } from "../../enums/Token";
 import { useRouter } from "next/router";
 import { shortToK, colorChangePrice } from "../../utils/utils";
+import { useChartsContext } from "../../contexts/ChartsContext";
 
 const VolumeCharts = dynamic(
   () => import("../../components/Charts/VolumeCharts"),
@@ -23,11 +24,26 @@ const PriceCharts = dynamic(
 );
 
 export default function TokenInfo() {
+  const { currentValue, setCurrentValue } = useChartsContext();
   const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
-  const [currentValue, setCurrentValue] = useState();
+  const [showValue, setShowValue] = useState();
+
+  console.log(showValue);
 
   const router = useRouter();
   const tokenInfo = router.query;
+
+  useEffect(() => {
+    if (visibleChart === ChartSwitchButton.PRICE) {
+      setShowValue(currentValue.price);
+    } else if (visibleChart === ChartSwitchButton.TVL) {
+      setShowValue(currentValue.tvl);
+    } else if (visibleChart === ChartSwitchButton.VOLUME) {
+      setShowValue(currentValue.volume);
+    } else {
+      return <div>Loading...</div>;
+    }
+  }, [visibleChart, currentValue]);
 
   const styleTvl = {
     backgroundColor: "#191b1f",
@@ -173,7 +189,7 @@ export default function TokenInfo() {
               </button>
             </div>
             <div className={styles.graphValue}>
-              <div>{shortToK(currentValue)}</div>
+              <div>{shortToK(showValue)}</div>
             </div>
           </div>
           {renderGraph()}

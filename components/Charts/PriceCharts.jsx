@@ -66,9 +66,15 @@ export default function PriceCharts({ setCurrentValue }) {
         param.point.y < 0 ||
         param.point.y > chartContainerRef.current.clientHeight
       ) {
-        return;
+        setCurrentValue((prev) => ({
+          ...prev,
+          price: undefined,
+        }));
       } else {
-        setCurrentValue(param.seriesPrices.get(candleSeries).close);
+        setCurrentValue((prev) => ({
+          ...prev,
+          price: param.seriesPrices.get(candleSeries).close,
+        }));
       }
     });
   }, [setCurrentValue]);

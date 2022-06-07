@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { TopTokensContext } from "../contexts/TopTokensContext";
+import { useTopTokens } from "../contexts/TopTokensContext";
 import Image from "next/image";
 import leftArrow from "../assets/icon/arrow-left.svg";
 import rightArrow from "../assets/icon/arrow-right.svg";
@@ -13,7 +13,7 @@ export default function TopTokens() {
     goToPreviousPage,
     currentPage,
     renderTokens,
-  } = useContext(TopTokensContext);
+  } = useTopTokens();
   if (!paginateTokens) return null;
   return (
     <div className={styles.topTokens}>

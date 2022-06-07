@@ -72,8 +72,15 @@ export default function VolumeCharts({ styleCharts, setCurrentValue }) {
         param.point.y < 0 ||
         param.point.y > chartContainerRef.current.clientHeight
       ) {
+        setCurrentValue((prev) => ({
+          ...prev,
+          volume: undefined,
+        }));
       } else {
-        setCurrentValue(param.seriesPrices.get(baselineSeries));
+        setCurrentValue((prev) => ({
+          ...prev,
+          volume: param.seriesPrices.get(baselineSeries),
+        }));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

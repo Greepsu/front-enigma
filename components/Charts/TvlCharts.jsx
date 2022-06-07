@@ -74,9 +74,15 @@ export default function TvlCharts({ setCurrentValue, styleCharts }) {
         param.point.y < 0 ||
         param.point.y > chartContainerRef.current.clientHeight
       ) {
-        return;
+        setCurrentValue((prev) => ({
+          ...prev,
+          tvl: undefined,
+        }));
       } else {
-        setCurrentValue(param.seriesPrices.get(baselineSeries));
+        setCurrentValue((prev) => ({
+          ...prev,
+          tvl: param.seriesPrices.get(baselineSeries),
+        }));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

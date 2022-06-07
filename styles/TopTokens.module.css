@@ -2,7 +2,9 @@
   width: 100%;
 }
 
-.tokenContainer {display: contents;}
+.tokenContainer {
+  display: contents;
+}
 
 .topTokens h4 {
   color: var(--gray-font);
