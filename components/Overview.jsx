@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { useChartsContext } from "../contexts/ChartsContext";
 import { useTopTokens } from "../contexts/TopTokensContext";
 import { shortToK, colorChangePrice } from "../utils/utils";
+
 const TvlCharts = dynamic(() => import("../components/Charts/TvlCharts"), {
   ssr: false,
 });
@@ -19,11 +20,10 @@ const VolumeCharts = dynamic(
 export default function Overview() {
   const { currentValue, setCurrentValue } = useChartsContext();
   const { paginateTokens } = useTopTokens();
+
   const ethereum = paginateTokens[1];
 
   if (!ethereum) return <div>Loading...</div>;
-
-  console.log(ethereum);
 
   const styleTvl = {
     backgroundColor: "transparent",

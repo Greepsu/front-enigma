@@ -5,7 +5,6 @@
   align-items: center;
   height: 100%;
   width: 65%;
-  border: 1px solid green;
 }
 
 .cardContainer {
@@ -65,6 +64,34 @@
 .info span:nth-child(2) {
   color: white;
   font-weight: 600;
+}
+
+ @media (max-width: 1200px) {
+
+  .overview {
+    width: 90%;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+  }
+
+  .graphCard {
+    width: 100%;
+  }
+
+  .infoContainer {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .graphCard {
+    height: 250px;
+  }
+
 }
 
 

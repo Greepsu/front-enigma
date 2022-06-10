@@ -4,8 +4,11 @@ import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
 import ImageWithFallback from "./ImageWithFallback";
 import fallbackImg from "../assets/icon/help-circle.svg";
+import { useWindowSize } from "react-use";
 
 export default function Token({ ...tokenData }) {
+  const { width } = useWindowSize();
+
   return (
     <Link
       href={{
@@ -28,16 +31,22 @@ export default function Token({ ...tokenData }) {
           <div className={styles.tokenName}>{tokenData.name}</div>
           <div className={styles.tokenId}>({tokenData.symbol})</div>
         </div>
-        <div className={styles.tokenPrice}>{tokenData.price.toFixed(2)} $</div>
-        <div className={styles.tokenVolume}>
-          {shortToK(tokenData.totalSupply)}
-        </div>
-        <div
-          className={styles.tokenTvl}
-          style={colorChangePrice(tokenData.priceChange24h)}
-        >
-          {tokenData.priceChange24h.toFixed(2)} %
-        </div>
+        <div className={styles.tokenPrice}>{shortToK(tokenData.price)} $</div>
+        {width > 768 ? (
+          <>
+            <div className={styles.tokenVolume}>
+              {shortToK(tokenData.totalSupply)}
+            </div>
+            <div
+              className={styles.tokenTvl}
+              style={colorChangePrice(tokenData.priceChange24h)}
+            >
+              {tokenData.priceChange24h.toFixed(2)} %
+            </div>
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </Link>
   );

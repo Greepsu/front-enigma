@@ -19,3 +19,9 @@
     display: flex;
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .topMovers {
+        display: none
+    }
+}

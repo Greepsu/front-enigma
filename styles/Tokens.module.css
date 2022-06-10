@@ -6,3 +6,9 @@
 .tokens h4 {
     color: white;
 }
+
+@media (max-width: 768px) {
+    .tokens {
+        padding: 0 5%;
+    }
+}

@@ -48,7 +48,7 @@
 }
 
 .left {
-    display: flex;
+  display: flex;
   flex-direction: column;
   line-height: 0.8;
   gap: 12px;
@@ -248,6 +248,40 @@
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+
+  .tokenInfo {
+    padding: 0 5%;
+  }
+  .header {
+    flex-direction: column;
+  }
+
+  .description {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .right {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .name {
+    margin-left: 0;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .volumeInfo {
+    width: 100%;
+  }
+}
 
 
 

@@ -3,11 +3,14 @@ import { TokenContext } from "../contexts/TokenContext";
 import { paginate } from "../utils/utils";
 import Token from "../components/Token";
 import styles from "../styles/TopTokens.module.css";
+import { useWindowSize } from "react-use";
 
 export const TopTokensContext = createContext({});
 
 export function TopTokensProvider({ children }) {
   const { data } = useContext(TokenContext);
+  const { width } = useWindowSize();
+
   const [paginateTokens, setPaginateTokens] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 

@@ -5,7 +5,6 @@
   align-items: center;
   height: 80px;
   padding: 0 20px;
-  z-index: 0;
 }
 
 
@@ -98,4 +97,42 @@
 
 .menu:hover {
   background-color: #40444f;
+}
+
+
+
+@media (max-width: 1200px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .leftResponsive > a {
+    margin-right: 40px;
+  }
+
+  .right {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .rightResponsive {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+
+  .searchBar {
+    width: 100%;
+    margin-bottom: 10px;
+
+  }
+
 }

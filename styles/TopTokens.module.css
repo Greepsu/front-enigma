@@ -58,3 +58,9 @@
   cursor: pointer;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(322deg) brightness(102%) contrast(101%);
 }
+
+@media (max-width: 768px) {
+  .topTokensListLegend {
+    grid-template-columns: 20px 3fr repeat(1, 1fr);
+  }
+}

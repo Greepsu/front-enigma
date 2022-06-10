@@ -1,10 +1,10 @@
 import React from "react";
-import { useContext } from "react";
 import { useTopTokens } from "../contexts/TopTokensContext";
 import Image from "next/image";
 import leftArrow from "../assets/icon/arrow-left.svg";
 import rightArrow from "../assets/icon/arrow-right.svg";
 import styles from "../styles/TopTokens.module.css";
+import { useWindowSize } from "react-use";
 
 export default function TopTokens() {
   const {
@@ -14,6 +14,8 @@ export default function TopTokens() {
     currentPage,
     renderTokens,
   } = useTopTokens();
+  const { width } = useWindowSize();
+
   if (!paginateTokens) return null;
   return (
     <div className={styles.topTokens}>
@@ -22,8 +24,14 @@ export default function TopTokens() {
           <div className={styles.legend}>#</div>
           <div className={styles.legend}>Name</div>
           <div className={styles.legendR}>Price</div>
-          <div className={styles.legendR}>Total liquidity</div>
-          <div className={styles.legendR}>Price change</div>
+          {width > 768 ? (
+            <>
+              <div className={styles.legendR}>Total liquidity</div>
+              <div className={styles.legendR}>Price change</div>
+            </>
+          ) : (
+            ""
+          )}
         </div>
         {renderTokens()}
         <div className={styles.pagination}>
