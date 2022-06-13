@@ -33,7 +33,7 @@ export default function TopMovers() {
     <div className={styles.topMovers}>
       <h5>Top Movers</h5>
       <div className={styles.movers}>
-        <Ticker speed="6">
+        <Ticker speed={6}>
           {() => <>{<div style={{ display: "flex" }}>{renderMover()}</div>}</>}
         </Ticker>
       </div>

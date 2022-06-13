@@ -12,6 +12,10 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
+
+    return () => {
+      setMounted(false);
+    };
   }, []);
 
   return (
@@ -21,8 +25,8 @@ export default function Navbar() {
           <>
             <Image
               className={styles.logo}
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               src={uniswapLogo}
               alt="uniswap logo"
             />

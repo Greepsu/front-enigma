@@ -28,8 +28,6 @@ export default function TokenInfo() {
   const [visibleChart, setVisibleChart] = useState(ChartSwitchButton.PRICE);
   const [showValue, setShowValue] = useState();
 
-  console.log(showValue);
-
   const router = useRouter();
   const tokenInfo = router.query;
 
@@ -151,6 +149,7 @@ export default function TokenInfo() {
             <div className={styles.value}>$1.40m</div>
           </div>
         </div>
+
         <div className={styles.allChartsContainer}>
           <div className={styles.topContainer}>
             <div className={styles.switchButtonGroup}>

@@ -248,6 +248,18 @@
   font-weight: 500;
 }
 
+@media (max-width: 1200px) {
+  .volumeInfo {
+    width: 50%;
+  }
+
+  .allChartsContainer {
+
+    width: 90%;
+
+  }
+}
+
 @media (max-width: 768px) {
 
   .tokenInfo {
@@ -279,6 +291,10 @@
   }
 
   .volumeInfo {
+    width: 100%;
+  }
+
+  .allChartsContainer {
     width: 100%;
   }
 }
