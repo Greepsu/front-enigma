@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.2",
     "lightweight-charts": "^3.8.0",
     "next": "12.1.0",
     "nextjs-breadcrumbs": "^1.1.9",

@@ -18,8 +18,6 @@ export async function getServerSideProps() {
   });
   const tokens = await response.json();
 
-  console.log(tokens);
-
   return {
     props: { initialData: tokens.data },
   };
