@@ -17,11 +17,14 @@ export default function TopBar() {
   return (
     <div className={styles.topBar}>
       <div className={styles.left}>
-        <div className={styles.syncedBlock}>
+        <a
+          href={`https://etherscan.io/block/${useAlchemy()}`}
+          className={styles.syncedBlock}
+        >
           <span>Latest synced block: </span>
           <span>{useAlchemy()}</span>
           <div className={styles.dot}></div>
-        </div>
+        </a>
         <div className={styles.price}>
           <span>ETH Price: </span>
           <span>${shortToK(ethPrice)}</span>
