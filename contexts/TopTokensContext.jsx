@@ -30,7 +30,7 @@ export function TopTokensProvider({ children }) {
         key: token.id,
         rank: token.cmc_rank,
         name: token.name,
-        logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
+        logo: `${process.env.API_URL_LOGO}/${token.name.toLowerCase()}.png`,
         symbol: token.symbol,
         id: token.id,
         price: token.quote.USD.price,
