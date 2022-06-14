@@ -9,7 +9,6 @@ export const TopTokensContext = createContext({});
 
 export function TopTokensProvider({ children }) {
   const { data } = useContext(TokenContext);
-  const { width } = useWindowSize();
 
   const [paginateTokens, setPaginateTokens] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +29,7 @@ export function TopTokensProvider({ children }) {
         key: token.id,
         rank: token.cmc_rank,
         name: token.name,
-        logo: `${process.env.API_URL_LOGO}/${token.name.toLowerCase()}.png`,
+        logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
         symbol: token.symbol,
         id: token.id,
         price: token.quote.USD.price,
