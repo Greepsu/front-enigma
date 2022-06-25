@@ -8,6 +8,7 @@ export default function Mover({ ...moverData }) {
   return (
     <div className={styles.mover}>
       <ImageWithFallback
+        key={moverData.id}
         src={moverData.logo}
         fallbackSrc={fallbackSrc}
         className={styles.logo}

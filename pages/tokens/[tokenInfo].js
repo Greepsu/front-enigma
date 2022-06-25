@@ -6,6 +6,9 @@ import { ChartSwitchButton } from "../../enums/Token";
 import { useRouter } from "next/router";
 import { shortToK, colorChangePrice } from "../../utils/utils";
 import { useChartsContext } from "../../contexts/ChartsContext";
+import ImageWithFallback from "../../components/ImageWithFallback";
+import Loader from "../../components/Loader";
+import fallbackImg from "../../assets/icon/help-circle.svg";
 
 const VolumeCharts = dynamic(
   () => import("../../components/Charts/VolumeCharts"),
@@ -43,6 +46,8 @@ export default function TokenInfo() {
     }
   }, [visibleChart, currentValue]);
 
+  if (!currentValue) return <Loader />;
+
   const styleTvl = {
     backgroundColor: "#191b1f",
     textColor: "#545868",
@@ -75,7 +80,7 @@ export default function TokenInfo() {
         />
       );
     } else {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
   };
 
@@ -99,6 +104,15 @@ export default function TokenInfo() {
       <div className={styles.header}>
         <div className={styles.left}>
           <div className={styles.info}>
+            <ImageWithFallback
+              key={tokenInfo.id}
+              className={styles.logo}
+              src={tokenInfo.logo}
+              fallbackSrc={fallbackImg}
+              width={25}
+              height={25}
+              alt="logo"
+            />
             <div className={styles.name}>{tokenInfo.name}</div>
             <div className={styles.id}>{tokenInfo.symbol}</div>
           </div>

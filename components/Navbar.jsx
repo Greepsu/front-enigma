@@ -9,19 +9,11 @@ import uniswapLogo from "../assets/icon/uniswap.png";
 
 export default function Navbar() {
   const { width } = useWindowSize();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-
-    return () => {
-      setMounted(false);
-    };
-  }, []);
 
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>
-        {width > 1200 && mounted ? (
+        {width > 1200 ? (
           <>
             <Image
               className={styles.logo}
@@ -31,7 +23,7 @@ export default function Navbar() {
               alt="uniswap logo"
             />
             <Link href="/">Overview</Link>
-            <Link href="/tokens/tokens" as="/tokens">
+            <Link href="/tokens">
               <a className={styles.leftToken}>Tokens</a>
             </Link>
           </>
@@ -46,7 +38,7 @@ export default function Navbar() {
             />
             <div className={styles.leftResponsive}>
               <Link href="/">Overview</Link>
-              <Link href="/tokens/tokens" as="/tokens">
+              <Link href="/tokens">
                 <a className={styles.leftToken}>Tokens</a>
               </Link>
             </div>
@@ -55,7 +47,7 @@ export default function Navbar() {
       </div>
 
       <div className={styles.right}>
-        {width > 1200 && mounted ? (
+        {width > 1200 ? (
           <>
             <div className={styles.dropdown}>
               <div className={styles.cryptoLogo}>

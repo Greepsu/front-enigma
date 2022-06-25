@@ -6,18 +6,18 @@ import { useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
 
 export default function TopMovers() {
-  const { data } = useContext(TokenContext);
+  const { value } = useContext(TokenContext);
   const [topMovers, setTopMovers] = useState([]);
 
   useEffect(() => {
-    if (data) setTopMovers(data.slice(0, 10));
-  }, [data]);
+    if (value) setTopMovers(value.slice(0, 10));
+  }, [value]);
 
   const renderMover = () => {
     return topMovers.map((token) => {
       const moverData = {
         key: token.id,
-        logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
+        logo: `${process.env.API_URL_LOGO}/${token.name.toLowerCase()}.png`,
         symbol: token.symbol,
         price: token.quote.USD.price,
         priceChange24h: token.quote.USD.percent_change_24h,

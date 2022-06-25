@@ -1,14 +1,16 @@
-import React, { useState, useMemo, useContext, createContext } from "react";
+import React, { useContext, createContext } from "react";
+import { useFetch } from "../hooks/useFetch";
 
 export const TokenContext = createContext({});
 
-export function TokenContextProvider({ children, initialData }) {
-  const [data, setData] = useState(initialData);
-
-  const value = useMemo(() => ({ data, setData }), [data]);
+export function TokenContextProvider({ children }) {
+  const url = "/api/token";
+  const { data, loading, error } = useFetch(url);
+  const value = data.data;
+  const values = { value, loading, error };
 
   return (
-    <TokenContext.Provider value={value}>{children}</TokenContext.Provider>
+    <TokenContext.Provider value={values}>{children}</TokenContext.Provider>
   );
 }
 

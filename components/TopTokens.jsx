@@ -6,6 +6,8 @@ import rightArrow from "../assets/icon/arrow-right.svg";
 import styles from "../styles/TopTokens.module.css";
 import { useWindowSize } from "react-use";
 
+import Loader from "./Loader";
+
 export default function TopTokens() {
   const {
     paginateTokens,
@@ -16,7 +18,7 @@ export default function TopTokens() {
   } = useTopTokens();
   const { width } = useWindowSize();
 
-  if (!paginateTokens) return null;
+  if (!paginateTokens) return <Loader />;
   return (
     <div className={styles.topTokens}>
       <div className={styles.topTokensList}>

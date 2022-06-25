@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { shortToK, colorChangePrice } from "../utils/utils";
 import styles from "../styles/Token.module.css";
 import ImageWithFallback from "./ImageWithFallback";
 import fallbackImg from "../assets/icon/help-circle.svg";
-import { useWindowSize } from "react-use";
+import {useWindowSize} from "react-use";
 
 export default function Token({ ...tokenData }) {
   const { width } = useWindowSize();
@@ -21,6 +21,7 @@ export default function Token({ ...tokenData }) {
         <div className={styles.tokenNumber}>{tokenData.rank}</div>
         <div className={styles.tokenNameInfo}>
           <ImageWithFallback
+            key={tokenData.id}
             className={styles.tokenLogo}
             src={tokenData.logo}
             fallbackSrc={fallbackImg}

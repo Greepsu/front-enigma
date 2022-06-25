@@ -3,20 +3,19 @@ import { TokenContext } from "../contexts/TokenContext";
 import { paginate } from "../utils/utils";
 import Token from "../components/Token";
 import styles from "../styles/TopTokens.module.css";
-import { useWindowSize } from "react-use";
 
 export const TopTokensContext = createContext({});
 
 export function TopTokensProvider({ children }) {
-  const { data } = useContext(TokenContext);
+  const { value, loading } = useContext(TokenContext);
 
   const [paginateTokens, setPaginateTokens] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!data) return;
-    setPaginateTokens(paginate(data, 10, currentPage));
-  }, [data, currentPage]);
+    if (loading) return;
+    setPaginateTokens(paginate(value, 10, currentPage));
+  }, [loading, value, currentPage]);
 
   const goToNextPage = () => setCurrentPage((page) => page + 1);
 
@@ -24,12 +23,11 @@ export function TopTokensProvider({ children }) {
 
   const renderTokens = () => {
     return paginateTokens.map((token) => {
-      if (!paginateTokens) return null;
       const tokenData = {
         key: token.id,
         rank: token.cmc_rank,
         name: token.name,
-        logo: `https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${token.name.toLowerCase()}.png`,
+        logo: `${process.env.API_URL_LOGO}/${token.name.toLowerCase()}.png`,
         symbol: token.symbol,
         id: token.id,
         price: token.quote.USD.price,
